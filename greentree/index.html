@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Zoca Widget Test</title>
+<title>Zoca Widget — Green Tree + Wexford</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -29,35 +29,49 @@
   }
   h1 { font-size: 24px; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.01em; }
   p { color: #6b6b6b; font-size: 15px; line-height: 1.5; margin: 0 0 28px; }
-  .book-now {
+  .buttons { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+  button.location {
     background: #0f766e; color: white; border: none; border-radius: 8px;
     padding: 14px 28px; font-size: 15px; font-weight: 600; cursor: pointer;
-    transition: background 0.15s; font-family: inherit;
+    transition: background 0.15s; font-family: inherit; min-width: 220px;
   }
-  .book-now:hover { background: #0d5d56; }
+  button.location:hover { background: #0d5d56; }
+  button.location.wexford { background: #7c3aed; }
+  button.location.wexford:hover { background: #6d28d9; }
   .meta {
-    margin-top: 24px; padding-top: 20px; border-top: 1px solid #f0ede5;
+    margin-top: 28px; padding-top: 20px; border-top: 1px solid #f0ede5;
     font-size: 12px; color: #9a9a9a; font-family: "SF Mono", Menlo, monospace;
-    word-break: break-all; text-align: left;
+    word-break: break-all; text-align: left; line-height: 1.6;
   }
+  .meta strong { color: #6b6b6b; }
 </style>
 </head>
 <body>
   <div class="card">
     <h1>Book an appointment</h1>
-    <p>Click below to launch the Zoca booking widget.</p>
-    <button id="zoca-book" class="book-now">Book Now</button>
+    <p>Pick a location to launch the Zoca booking widget for that entity.</p>
+    <div class="buttons">
+      <button id="book-greentree" class="location">Book at Green Tree</button>
+      <button id="book-wexford" class="location wexford">Book at Wexford</button>
+    </div>
     <div class="meta">
-      entity: 0a072216-613f-48bc-8cca-37da0f8b8699<br>
-      api: https://api.zoca.ai<br>
-      script: zoca-mindbody.zoca.com/scheduler.min.js (production)
+      <strong>Green Tree entity:</strong> 0a072216-613f-48bc-8cca-37da0f8b8699<br>
+      <strong>Wexford entity:</strong> 2b21fbb0-7716-4af8-846b-0306a4922dae<br>
+      <strong>api:</strong> https://api.zoca.ai<br>
+      <strong>bundle:</strong> zoca-mindbody.zoca.com/scheduler.min.js
     </div>
   </div>
 
   <script src="https://zoca-mindbody.zoca.com/scheduler.min.js"
     data-entity-id="0a072216-613f-48bc-8cca-37da0f8b8699"
     data-api-base="https://api.zoca.ai"
-    data-attach-to="#zoca-book"
+    data-attach-to="#book-greentree"
+    async></script>
+
+  <script src="https://zoca-mindbody.zoca.com/scheduler.min.js"
+    data-entity-id="2b21fbb0-7716-4af8-846b-0306a4922dae"
+    data-api-base="https://api.zoca.ai"
+    data-attach-to="#book-wexford"
     async></script>
 </body>
 </html>
